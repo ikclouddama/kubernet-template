@@ -1,0 +1,19 @@
+#KAMS
+kind: Services
+apiVersion: v1
+metadata:
+  apiVersion: v1
+  kind: Namespace
+  metadata:
+    namespace:  dev
+    name: appsvc
+  spec:
+    selector:
+      app: tesla
+    type: Nodeport
+    ports:
+    - targetPort: 8080
+      Nodeport: 31000
+      port: 80
+
+

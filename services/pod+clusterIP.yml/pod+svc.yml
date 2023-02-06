@@ -1,0 +1,31 @@
+# KAMS
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: myapp
+  labels:
+    app: tesla
+    #app: fe
+spec:
+  containers:
+    - name: webapp
+      image: mylandmarktech/java-web-app
+      ports:
+      - containerPort: 8080
+---
+# Add service here 
+# KAMS
+apiVersion: api
+kind: Service
+metada:
+  name: myappsvc # name of service
+spec:
+  type: ClusterIP # Default Kubernet service 
+  selector: # Selector is the function of label 
+    app: tesla
+    #app:fe
+
+  ports:
+  - port: 80 # service port is generally 80
+    tatgetPort: 8080 # java web application on tomcat ===> port for tomcat 
+
